@@ -298,7 +298,7 @@ function MilestoneRow({
     </tr>
   ) : (
     <tr styleName="milestone-row">
-      {isUpdatable ? <td styleName="expand" onClick={() => onExpand(!isExpand, milestone)}>{isExpand ? <IconClose />: <IconExpand />}</td>: null}
+      {isUpdatable ? <td styleName="expand" onClick={() => onExpand(!isExpand, milestone)}>{isExpand ? <IconClose />: <IconExpand />}</td>: <td></td>}
       {isEditingMilestone ? <td/> : <td styleName="checkbox">
         <TCFormFields.Checkbox
           name={`select-${rowId}`}

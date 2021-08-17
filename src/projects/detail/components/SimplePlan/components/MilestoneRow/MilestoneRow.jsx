@@ -298,7 +298,7 @@ function MilestoneRow({
     </tr>
   ) : (
     <tr styleName="milestone-row">
-      {isUpdatable ? <td styleName="expand" onClick={() => onExpand(!isExpand, milestone)}>{isExpand ? <IconClose />: <IconExpand />}</td>: <td></td>}
+      {isUpdatable ? <td styleName="expand" onClick={() => onExpand(!isExpand, milestone)}>{isExpand ? <IconClose />: <IconExpand />}</td>: <td />}
       {isEditingMilestone ? <td/> : <td styleName="checkbox">
         <TCFormFields.Checkbox
           name={`select-${rowId}`}
@@ -354,17 +354,19 @@ function MilestoneRow({
         isCustomer && (
           <td styleName="action">
             <div styleName="inline-menu approve">
-              {showApproval && <MilestoneApprovalButton 
-                type={'approve'}
-                onClick={() => {
-                  onApprove({type: 'approve', item: milestone})
-                }}
+              {
+                showApproval && <MilestoneApprovalButton 
+                  type={'approve'}
+                  onClick={() => {
+                    onApprove({type: 'approve', item: milestone})
+                  }}
               />}
-              { showApproval && <MilestoneApprovalButton 
-                type="reject"
-                onClick={(v) => {
-                  onApprove({type: 'reject', comment: v, item: milestone})
-                }}
+              { 
+                showApproval && <MilestoneApprovalButton 
+                  type="reject"
+                  onClick={(v) => {
+                    onApprove({type: 'reject', comment: v, item: milestone})
+                  }}
               />}
             </div>
           </td>
